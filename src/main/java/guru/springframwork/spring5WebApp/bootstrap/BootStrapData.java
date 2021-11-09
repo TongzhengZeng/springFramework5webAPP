@@ -37,17 +37,23 @@ public class BootStrapData implements CommandLineRunner {
         Article ddd = new Article("Domain Driven Design","123123");
         eric.getArticles().add(ddd);
         ddd.getAuthors().add(eric);
+        ddd.setPublisher(publisher);
+        publisher.getArticles().add(ddd);
         authorRepository.save(eric);
         articleRepository.save(ddd);
+        publisherRepository.save(publisher);
 
         Author rod = new Author("Rod", "Johnson");
         Article noEJB = new Article("J2EE Development withou EJB", "39394599");
         rod.getArticles().add(noEJB);
         noEJB.getAuthors().add(rod);
+        noEJB.setPublisher(publisher);
+        publisher.getArticles().add(noEJB);
         authorRepository.save(rod);
         articleRepository.save(noEJB);
+        publisherRepository.save(publisher);
 
         System.out.println("Number of Articles: " + articleRepository.count());
-
+        System.out.println("Publisher number of articles: " + publisher.getArticles().size());
     }
 }

@@ -11,6 +11,9 @@ public class Article {
     private String title;
     private String isbn;
 
+    @ManyToOne
+    private Publisher publisher;
+
     @ManyToMany
     @JoinTable(name = "author_article", joinColumns = @JoinColumn(name= "article_id"),
                 inverseJoinColumns = @JoinColumn(name = "author_id"))
@@ -21,6 +24,14 @@ public class Article {
     public Article(String title, String isbn) {
         this.title = title;
         this.isbn = isbn;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 
     public Long getId() {
