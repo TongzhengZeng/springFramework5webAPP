@@ -17,6 +17,6 @@ public class ArticleController {
     public String getArticles(Model model){
         model.addAttribute("articles", articleRepository.findAll());
 
-        return "articles";
+        return "articles/list";
     }
 }
